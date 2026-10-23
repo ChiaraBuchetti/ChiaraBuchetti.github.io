@@ -289,7 +289,7 @@ def main():
     genera("default", "Lingua e cultura cinese: didattica, materiali e servizi linguistici", "Chiara Buchetti", "中文", "red")
 
     # articoli
-    for path in sorted(glob.glob(os.path.join(ROOT, "_posts", "*"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, "_posts", "**", "*.*"), recursive=True)):
         fm, m, s = leggi(path)
         if fm is None:
             continue

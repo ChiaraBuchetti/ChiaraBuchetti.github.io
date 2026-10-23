@@ -1,0 +1,257 @@
+# =====================================================================
+# Configurazione di Pages CMS (https://pagescms.org)
+# Pannello per scrivere e pubblicare gli articoli senza toccare il codice.
+# Accesso: https://app.pagescms.org  ·  guida d'uso per Chiara: vedi README
+# =====================================================================
+
+media:
+  - name: immagini
+    label: Immagini
+    input: assets/uploads
+    output: /assets/uploads
+    categories: [image]
+    rename: safe
+  - name: documenti
+    label: Documenti (PDF)
+    input: assets/materiali
+    output: /assets/materiali
+    categories: [document, compressed]
+    rename: safe
+
+components:
+  # campi comuni a tutti gli articoli
+  titolo:
+    type: string
+    label: Titolo
+    required: true
+  data:
+    type: date
+    label: Data di pubblicazione
+    description: Gli articoli sono ordinati per data, dal più recente.
+    options:
+      time: true
+      format: "yyyy-MM-dd HH:mm:ss"
+  categorie:
+    type: select
+    label: Categoria
+    description: "Scegli almeno una categoria. «In evidenza» mette l'articolo tra i contenuti da non perdere."
+    options:
+      multiple: true
+      min: 1
+      values:
+        - { name: Notizie, label: Notizie }
+        - { name: Guide, label: Guide }
+        - { name: Corsi, label: Corsi }
+        - { name: Highlight, label: In evidenza }
+  tag:
+    type: string
+    label: Tag
+    description: "Parole chiave, una per riga (es. capodanno cinese, Pisa)."
+    list: true
+  copertina:
+    type: object
+    label: Copertina
+    fields:
+      - name: teaser
+        type: image
+        label: Immagine di copertina
+        description: "Facoltativa. Compare nelle schede del blog; se manca si usa la prima foto dell'articolo per i social."
+        options:
+          media: immagini
+          path: assets/uploads/articoli
+  riassunto:
+    type: text
+    label: Riassunto
+    description: "Facoltativo: una o due frasi mostrate nelle schede del blog e nelle anteprime su Google e sui social. Se vuoto si usa l'inizio del testo."
+    options:
+      maxlength: 300
+
+content:
+  - name: articoli
+    label: Articoli
+    type: collection
+    path: _posts
+    subfolders: false
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    operations:
+      create: true
+      rename: false        # cambiare il nome del file cambierebbe l'indirizzo dell'articolo
+      delete: true
+    view:
+      fields: [title, date, categories, published]
+      primary: title
+      sort: [date, title]
+      search: [title, tags]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, component: titolo }
+      - { name: date, component: data }
+      - { name: categories, component: categorie }
+      - { name: tags, component: tag }
+      - name: published
+        type: boolean
+        label: Pubblicato
+        description: "Togli la spunta per tenerlo come bozza: viene salvato ma non compare sul sito."
+        default: true
+      - { name: header, component: copertina }
+      - { name: excerpt, component: riassunto }
+      - name: body
+        type: rich-text
+        label: Testo
+        options:
+          format: markdown
+          media: immagini
+          path: assets/uploads/articoli
+          rename: safe
+      # campi tecnici gestiti dal sito: nascosti, vengono conservati
+      - { name: permalink, type: string, hidden: true }
+      - name: image
+        type: object
+        hidden: true
+        fields:
+          - { name: path, type: string }
+          - { name: width, type: number }
+          - { name: height, type: number }
+
+  - name: articoli-wordpress
+    label: Articoli del vecchio sito
+    type: collection
+    path: _posts/wordpress
+    format: yaml-frontmatter
+    operations:
+      create: false        # i nuovi articoli si scrivono in «Articoli»
+      rename: false
+      delete: true
+    view:
+      fields: [title, date, categories]
+      primary: title
+      sort: [date, title]
+      search: [title, tags]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, component: titolo }
+      - { name: date, component: data }
+      - { name: categories, component: categorie }
+      - { name: tags, component: tag }
+      - { name: header, component: copertina }
+      - { name: excerpt, component: riassunto }
+      - name: body
+        type: code
+        label: Testo (HTML importato da WordPress)
+        description: "Questi articoli contengono gallerie, video e impaginazione del vecchio sito: correggi il testo senza cancellare i tag tra < >."
+        options:
+          format: html
+      - { name: permalink, type: string, hidden: true }
+      - { name: wordpress_id, type: number, hidden: true }
+      - name: image
+        type: object
+        hidden: true
+        fields:
+          - { name: path, type: string }
+          - { name: width, type: number }
+          - { name: height, type: number }
+
+  - name: sito
+    label: Contenuti del sito
+    type: group
+    items:
+      - name: materiali
+        label: Materiale didattico
+        type: file
+        path: _data/materiali.yml
+        format: yaml
+        list: true
+        operations: { create: false, delete: false }
+        fields:
+          - { name: gruppo, type: string, label: Sezione, required: true }
+          - name: voci
+            type: object
+            label: Materiali
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{titolo}"
+            fields:
+              - { name: titolo, type: string, label: Titolo, required: true }
+              - name: file
+                type: file
+                label: File da scaricare
+                description: "PDF o altro documento. In alternativa compila il link qui sotto."
+                options:
+                  media: documenti
+                  path: assets/materiali
+              - name: url
+                type: string
+                label: Link esterno
+                description: "Es. presentazione Genially o Google Drive."
+
+      - name: rassegna
+        label: Rassegna stampa
+        type: file
+        path: _data/rassegna.yml
+        format: yaml
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{data} · {testata}"
+        operations: { create: false, delete: false }
+        fields:
+          - { name: data, type: string, label: Data, description: "GG/MM/AAAA (o testo libero, es. n. 4/2017)", required: true }
+          - { name: anno, type: number, label: Anno, description: "Serve a raggruppare gli articoli per anno.", required: true }
+          - { name: testata, type: string, label: Testata, description: "Giornale, radio, sito…", required: true }
+          - { name: nota, type: string, label: Nota, description: "Facoltativa (es. pp. 46-51)." }
+          - name: link
+            type: object
+            label: Articoli
+            list: true
+            fields:
+              - { name: titolo, type: string, label: Titolo, required: true }
+              - { name: url, type: string, label: Indirizzo, required: true }
+
+      - name: servizi
+        label: Servizi linguistici (schede)
+        type: file
+        path: _data/servizi.yml
+        format: yaml
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titolo}"
+        operations: { create: false, delete: false }
+        fields:
+          - { name: id, type: string, hidden: true }
+          - { name: titolo, type: string, label: Titolo, required: true }
+          - { name: breve, type: string, label: Titolo breve (barra di navigazione) }
+          - { name: zh, type: string, label: Carattere cinese }
+          - { name: pinyin, type: string, label: Pinyin }
+          - name: colore
+            type: select
+            label: Colore
+            options:
+              values:
+                - { name: red, label: Rosso }
+                - { name: yellow, label: Giallo }
+                - { name: jade, label: Giada }
+                - { name: sky, label: Blu }
+                - { name: ink, label: Inchiostro }
+          - { name: desc, type: text, label: Descrizione breve }
+          - { name: lingue, type: string, label: Lingue, list: true }
+          - { name: url, type: string, hidden: true }
+          - { name: form, type: string, hidden: true }
+
+settings:
+  content: true            # conserva i campi del front matter non elencati qui
+  commit:
+    identity: user         # nei commit compare il nome di chi ha fatto la modifica
+    templates:
+      create: "Nuovo contenuto: {path} (via Pages CMS)"
+      update: "Modifica: {path} (via Pages CMS)"
+      delete: "Eliminato: {path} (via Pages CMS)"
+      rename: "Rinominato: {oldPath} → {newPath} (via Pages CMS)"

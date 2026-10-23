@@ -80,6 +80,29 @@ bundle exec jekyll serve --drafts   # mostra anche le bozze
 
 I commenti WordPress non vengono importati (il sito statico non li gestisce).
 
+## Scrivere gli articoli con Pages CMS (senza toccare il codice)
+
+Il sito è configurato per [Pages CMS](https://pagescms.org): un pannello web, usabile anche da telefono,
+per scrivere articoli, caricare foto e aggiornare materiali, rassegna stampa e schede dei servizi.
+La configurazione è nel file `.pages.yml`.
+
+Prima configurazione (una volta sola, da chi gestisce il repository):
+
+1. Caricare il repository su GitHub (può essere privato).
+2. Entrare su <https://app.pagescms.org> con GitHub e installare l'app «Pages CMS» sul repository.
+3. Invitare Chiara come *collaboratrice* dal pannello di Pages CMS: le basta un indirizzo email,
+   non serve un account GitHub.
+4. Se il repository viene trasferito su un altro account, reinstallare l'app su quell'account
+   e controllare che gli inviti ai collaboratori siano ancora attivi.
+
+Organizzazione degli articoli:
+
+- `_posts/` → **Articoli**: quelli nuovi, scritti con l'editor visuale (file Markdown).
+- `_posts/wordpress/` → **Articoli del vecchio sito**: importati da WordPress, in HTML;
+  si possono correggere ma non crearne di nuovi lì.
+- Le foto caricate dall'editor finiscono in `assets/uploads/articoli/`, i PDF in `assets/materiali/`.
+- Ogni salvataggio è un commit sul repository: GitHub Pages ripubblica il sito in un paio di minuti.
+
 ## Anteprime social (Facebook, LinkedIn, WhatsApp…)
 
 Ogni articolo e pagina ha un campo `image:` nel front matter, usato come immagine di anteprima.

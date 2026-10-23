@@ -71,8 +71,8 @@ def main():
     servono, cambiati = set(), 0
 
     posts = os.path.join(root, "_posts")
-    for nome in sorted(os.listdir(posts)):
-        p = os.path.join(posts, nome)
+    tutti = sorted(os.path.join(d, f) for d, _, fs in os.walk(posts) for f in fs if not f.startswith("."))
+    for p in tutti:
         testo = open(p, encoding="utf-8").read()
         nuovo = re.sub(r'(?:<p>\s*)?\[gallery([^\]]*)\](?:\s*</p>)?',
                        lambda m: galleria(re.search(r'ids="([^"]+)"', m.group(1)).group(1).split(","), att, servono)

@@ -10,7 +10,7 @@ Uso (dalla cartella principale del repository):
 L'export si ottiene dal pannello WordPress: Strumenti -> Esporta -> "Tutti i contenuti".
 
 Cosa produce:
-  _posts/AAAA-MM-GG-slug.html     articoli pubblicati (stesso indirizzo del vecchio sito)
+  _posts/wordpress/AAAA-MM-GG-slug.html  articoli pubblicati (stesso indirizzo del vecchio sito)
   _drafts/slug.html               bozze
   _importate/pagine/*.html        testo delle pagine (da ricopiare in _pages/ a mano)
   _importate/download-manager.txt elenco dei file del plugin Download Manager
@@ -209,7 +209,7 @@ def main():
             attachments[text(it, "wp:post_id")] = text(it, "wp:attachment_url")
 
     dirs = {k: os.path.join(root, v) for k, v in {
-        "posts": "_posts", "drafts": "_drafts",
+        "posts": os.path.join("_posts", "wordpress"), "drafts": "_drafts",
         "pages": "_importate/pagine", "imp": "_importate",
     }.items()}
     for d in dirs.values():
@@ -316,7 +316,7 @@ def main():
 
     report = [
         f"Import del {datetime.now():%Y-%m-%d %H:%M}",
-        f"Articoli pubblicati: {stats['post']}  ->  _posts/",
+        f"Articoli pubblicati: {stats['post']}  ->  _posts/wordpress/",
         f"Bozze:               {stats['bozze']}  ->  _drafts/",
         f"Pagine:              {stats['pagine']}  ->  _importate/pagine/ (da ricopiare in _pages/)",
         f"Elementi Download Manager: {len(wpdm)}  ->  _importate/download-manager.txt",

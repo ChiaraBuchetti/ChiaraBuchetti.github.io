@@ -1,7 +1,8 @@
 {%- comment -%}
   Anteprima social per le pagine senza `image:` nel front matter
   (es. articoli nuovi non ancora passati da tools/immagini_social.py):
-  articoli → prima immagine del testo; altrimenti l'immagine generica del sito.
+  articoli → prima immagine del testo, poi l'immagine di copertina (header.teaser);
+  altrimenti l'immagine generica del sito.
 {%- endcomment -%}
 {%- unless page.image -%}
   {%- assign og = "" -%}
@@ -12,6 +13,7 @@
       {%- if after.size > 1 -%}{%- assign og = after[1] | split: '"' | first -%}{%- endif -%}
     {%- endif -%}
   {%- endif -%}
+  {%- if og == "" and page.header.teaser -%}{%- assign og = page.header.teaser -%}{%- endif -%}
   {%- if og == "" -%}{%- assign og = "/assets/images/social/default.png" -%}{%- endif -%}
   {%- unless og contains "://" -%}{%- assign og = og | absolute_url -%}{%- endunless %}
 <meta property="og:image" content="{{ og }}">
