@@ -1,0 +1,57 @@
+# Servizi linguistici: usati nella panoramica, nella barra delle sottopagine
+# e nel riquadro "Altri servizi".
+#   form: valore preselezionato nel modulo Contatti (/contatti/?servizio=...)
+#   lingue: coppie o lingue mostrate come etichette
+- id: lezioni
+  titolo: "Lezioni private e corsi"
+  breve: "Lezioni e corsi"
+  zh: "课"
+  pinyin: "kè"
+  colore: red
+  url: /servizi-linguistici/lezioni-private-e-corsi/
+  form: Lezioni
+  desc: "Cinese, inglese, tedesco, francese e italiano per stranieri: individuali o in piccoli gruppi, in presenza o online."
+  lingue: ["Cinese", "Inglese", "Tedesco", "Francese", "Italiano L2"]
+
+- id: traduzione
+  titolo: "Traduzione e localizzazione"
+  breve: "Traduzione"
+  zh: "译"
+  pinyin: "yì"
+  colore: yellow
+  url: /servizi-linguistici/traduzione-e-localizzazione/
+  form: Traduzione
+  desc: "Traduzioni verso l'italiano da cinese, inglese, tedesco e francese: testi giuridici, tecnici, pubblicitari e siti web."
+  lingue: ["ZH › IT", "EN › IT", "DE › IT", "FR › IT"]
+
+- id: mediazione
+  titolo: "Mediazione linguistica e culturale"
+  breve: "Mediazione"
+  zh: "桥"
+  pinyin: "qiáo"
+  colore: jade
+  url: /servizi-linguistici/mediazione-linguistica-e-culturale-cinese/
+  form: Mediazione
+  desc: "Mediazione per la lingua cinese in ambito scolastico e socio-sanitario, anche come supporto al doposcuola."
+  lingue: ["Cinese", "Inglese", "Tedesco"]
+
+- id: consulenza
+  titolo: "Consulenza linguistica per l'impresa"
+  breve: "Consulenza per l'impresa"
+  zh: "商"
+  pinyin: "shāng"
+  colore: sky
+  url: /servizi-linguistici/consulenza-linguistica-impresa/
+  form: Consulenza
+  desc: "Corrispondenza estera, fiere internazionali, clienti stranieri e localizzazione per il mercato cinese."
+  lingue: ["Cinese", "Inglese", "Tedesco"]
+
+- id: interpretariato
+  titolo: "Interpretariato di trattativa"
+  breve: "Interpretariato"
+  zh: "谈"
+  pinyin: "tán"
+  colore: ink
+  form: Interpretariato
+  desc: "Interpretariato durante incontri e trattative commerciali, su richiesta."
+  lingue: ["Cinese", "Inglese"]

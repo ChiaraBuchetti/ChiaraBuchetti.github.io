@@ -1,0 +1,106 @@
+# Rassegna stampa mostrata nella pagina Chi sono (dal più recente).
+# data: GG/MM/AAAA (oppure testo libero, es. "n. 4/2017")  ·  anno: usato per raggruppare
+# testata: nome del giornale/radio/sito  ·  link: uno o più articoli (titolo + url)
+
+- data: "03/02/2026"
+  anno: 2026
+  testata: "Cascina Notizie"
+  link:
+    - { titolo: "Benvenuto Anno del Cavallo: martedì 17 febbraio festa all'Istituto Pesenti di Cascina", url: "https://www.cascinanotizie.it/benvenuto-anno-del-cavallo-marted%C3%AC-17-febbraio-festa-allistituto-pesenti-di-cascina" }
+- data: "27/01/2026"
+  anno: 2026
+  testata: "La Nazione Pisa"
+  link:
+    - { titolo: "Il ponte da Cascina in Cina", url: "https://www.lanazione.it/pisa/cronaca/il-ponte-da-cascina-in-2c710b15" }
+- data: "06/10/2024"
+  anno: 2024
+  testata: "Pisa Today"
+  link:
+    - { titolo: "Cascina: gli studenti cinesi coinvolti nello scambio culturale ospitati nel Municipio", url: "https://www.pisatoday.it/cronaca/visita-studenti-cinesi-istituto-pesenti-comune-cascina.html" }
+- data: "25/01/2020"
+  anno: 2020
+  testata: "Tele Granducato"
+  link:
+    - { titolo: "Capodanno Cinese, è l'anno del topo", url: "https://www.telegranducato.it/2020/01/25/capodanno-cinese-e-lanno-del-topo/" }
+- data: "22/01/2020"
+  anno: 2020
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "Sabato si festeggia il Capodanno cinese al Vespucci", url: "https://www.quilivorno.it/eventi/sabato-si-festeggia-il-capodanno-cinese-al-vespucci/" }
+- data: "08/11/2019"
+  anno: 2019
+  testata: "Sì viaggiare (RSI – Radiotelevisione Svizzera)"
+  link:
+    - { titolo: "Pechino: una storia millenaria", url: "https://www.rsi.ch/rete-uno/programmi/intrattenimento/si-viaggiare/Pechino-una-storia-millenaria-12282732.html" }
+- data: "15/05/2018"
+  anno: 2018
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "«Cina da scoprire» il libro della Professoressa Buchetti", url: "http://www.quilivorno.it/news/scuola/cina-da-scoprire-il-libro-della-professoressa-buchetti/" }
+- data: "n. 4/2017"
+  anno: 2017
+  testata: "Istituto Confucio"
+  nota: "pp. 46-51"
+  link:
+    - { titolo: "Insegnare il cinese giocando: esperienze di ludodidattica", url: "http://www.confucius-institute-magazine.com/publications/volume-21issue-4-2017-3/" }
+- data: "13/07/2017"
+  anno: 2017
+  testata: "Radio Italia Cina, Viaggio in Occidente"
+  link:
+    - { titolo: "Il sillabo della lingua cinese", url: "https://www.mixcloud.com/radioitaliacina/viaggio-in-occidente-13-luglio-2017/" }
+- data: "06/06/2017"
+  anno: 2017
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "La Prof.ssa Buchetti fra gli autori del primo sillabo di lingua cinese in Italia", url: "http://www.quilivorno.it/news/scuola/la-prof-buchetti-fra-gli-autori-del-primo-sillabo-lingua-cinese-italia/" }
+- data: "14/01/2017"
+  anno: 2017
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "Vespucci, Tour in Cina con le foto di «Chinese Dream»", url: "http://www.quilivorno.it/news/spettacolo-cultura/vespucci-tour-in-cina-con-le-foto-di-chinese-dream/" }
+- data: "11/01/2017"
+  anno: 2017
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "«Chinese Dream», mostra fotografica al Vespucci", url: "http://www.quilivorno.it/news/scuola/chinese-dream-mostra-fotografica-al-vespucci/" }
+- data: "05/10/2016"
+  anno: 2016
+  testata: "Xinhuanet"
+  link:
+    - { titolo: "Legacy of Long March lives on in China", url: "http://news.xinhuanet.com/english/2016-10/05/c_135733239.htm" }
+- data: "09/09/2016"
+  anno: 2016
+  testata: "La Nazione"
+  link:
+    - { titolo: "Venti ragazzi del Vespucci volano a Pechino per uno stage linguistico", url: "http://www.lanazione.it/livorno/cronaca/stage-pechino-1.2494564" }
+- data: "08/09/2016"
+  anno: 2016
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "Vespucci. Stage linguistico a Pechino per 20 alunni", url: "http://www.quilivorno.it/news/scuola/vespucci-stage-linguistico-pechino-20-alunni/" }
+- data: "08/02/2016"
+  anno: 2016
+  testata: "Il Tirreno"
+  link:
+    - { titolo: "Decine di studenti e curiosi festeggiano il Capodanno Cinese al Vespucci", url: "http://iltirreno.gelocal.it/livorno/cronaca/2016/02/08/news/decine-di-studenti-e-curiosi-festeggiano-il-capodanno-cinese-al-vespucci-1.12922311" }
+- data: "03/02/2016"
+  anno: 2016
+  testata: "Il Tirreno"
+  link:
+    - { titolo: "In classe e al ristorante: «Così impariamo il cinese»", url: "http://iltirreno.gelocal.it/livorno/cronaca/2016/02/03/news/in-classe-e-al-ristorante-cosi-impariamo-il-cinese-1.12889607" }
+- data: "25/01/2016"
+  anno: 2016
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "Il Capodanno Cinese si festeggia al Vespucci", url: "http://www.quilivorno.it/news/scuola/il-capodanno-cinese-si-festeggia-al-vespucci/" }
+- data: "28/11/2015"
+  anno: 2015
+  testata: "Qui Livorno"
+  link:
+    - { titolo: "L'insegnamento del cinese, il Vespucci a Trieste", url: "http://www.quilivorno.it/news/scuola/linsegnamento-del-cinese-il-vespucci-a-trieste/" }
+- data: "14/05/2012"
+  anno: 2012
+  testata: "China-Files"
+  link:
+    - { titolo: "Traduzioni Collettive", url: "http://www.china-files.com/it/link/17819/sinologie-traduzioni-di-massa" }
+    - { titolo: "Sinologie: La capanna dello zio Tom", url: "http://carattericinesi.china-files.com/?p=2609" }

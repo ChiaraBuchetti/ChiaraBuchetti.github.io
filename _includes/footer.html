@@ -1,0 +1,32 @@
+<footer class="site-footer">
+  <div class="footer-pattern" aria-hidden="true"></div>
+  <div class="container footer-grid">
+    <div class="footer-about">
+      {% include logo.html %}
+      <p>Docente di lingua e cultura cinese, autrice di testi per la scuola, traduttrice e mediatrice linguistica.</p>
+      <p class="footer-quote"><span lang="zh">学而时习之，不亦说乎</span><br><small>«Imparare e mettere in pratica ciò che si è imparato: non è forse una gioia?» — Confucio</small></p>
+    </div>
+    <div>
+      <h3>Esplora</h3>
+      <ul class="footer-links">
+        {%- for item in site.data.navigation.main %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+        {%- endfor %}
+        <li><a href="{{ '/archivio/' | relative_url }}">Archivio articoli</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Seguimi</h3>
+      <ul class="footer-social">
+        {%- for s in site.social_links %}
+        <li><a href="{{ s.url }}" target="_blank" rel="noopener">{% include icon.html name=s.icon %}<span>{{ s.name }}</span></a></li>
+        {%- endfor %}
+        <li><a href="{{ '/feed.xml' | relative_url }}">{% include icon.html name="sparkle" %}<span>Feed RSS</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {{ site.time | date: "%Y" }} {{ site.title }}</span>
+    <a href="{{ '/cookie-law/' | relative_url }}">Privacy e cookie</a>
+  </div>
+</footer>

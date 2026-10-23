@@ -1,0 +1,93 @@
+---
+layout: default
+---
+{%- assign cat = page.categories | first -%}
+{%- assign cs = site.data.categorie[cat] | default: site.data.categorie.default -%}
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="post-hero tone-{{ cs.colore }}">
+    <div class="hero-shapes" aria-hidden="true">
+      <span class="shape shape-circle"></span><span class="shape shape-lattice"></span>
+    </div>
+    <span class="hero-zh" lang="zh" aria-hidden="true">{{ cs.zh }}</span>
+    <div class="container narrow">
+      <a class="back-link" href="{{ '/blog/' | relative_url }}">{% include icon.html name="arrow-left" px=16 %} Tutti gli articoli</a>
+      <div class="post-meta">
+        {%- if cat %}<a class="chip chip-light" href="{% if cs.slug %}{{ '/blog/' | append: cs.slug | append: '/' | relative_url }}{% else %}{{ '/blog/' | relative_url }}{% endif %}">{{ cs.nome | default: cat }}</a>{% endif %}
+        <span>{% include icon.html name="calendar" px=16 %} <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date-it.html date=page.date %}</time></span>
+        <span>{% include icon.html name="clock" px=16 %} {{ minutes }} min di lettura</span>
+      </div>
+      <h1 itemprop="headline">{{ page.title }}</h1>
+    </div>
+  </header>
+
+  {%- comment -%}
+    Immagine di copertina: mostrata solo se l'articolo non contiene già immagini
+    (negli articoli importati la copertina è quasi sempre ripetuta nel testo).
+  {%- endcomment -%}
+  {%- assign show_cover = false -%}
+  {%- if page.header.teaser -%}{%- unless content contains "<img" -%}{%- assign show_cover = true -%}{%- endunless -%}{%- endif %}
+  {%- if show_cover %}
+  <figure class="container narrow post-cover"><img src="{{ page.header.teaser | relative_url }}" alt=""></figure>
+  {%- endif %}
+
+  <div class="container narrow">
+    <div class="prose" itemprop="articleBody">
+      {{ content }}
+    </div>
+
+    {%- if page.tags.size > 0 %}
+    <div class="post-tags">
+      {% include icon.html name="tag" px=18 %}
+      {%- for t in page.tags %}
+      <a class="chip" href="{{ '/tag/' | relative_url }}#{{ t | slugify }}">{{ t }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    <div class="share">
+      <span>Condividi:</span>
+      <a class="icon-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Condividi su Facebook">{% include icon.html name="facebook" %}</a>
+      <a class="icon-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Condividi su LinkedIn">{% include icon.html name="linkedin" %}</a>
+      <a class="icon-btn" href="mailto:?subject={{ page.title | url_encode }}&amp;body={{ page.url | absolute_url | url_encode }}" aria-label="Invia per email">{% include icon.html name="mail" %}</a>
+    </div>
+
+    <aside class="author-box">
+      {% include avatar.html %}
+      <div>
+        <p class="kicker">Scritto da</p>
+        <h3>{{ site.author.name }}</h3>
+        <p>{{ site.author.bio }} <a href="{{ '/chi-sono/' | relative_url }}">Scopri di più</a></p>
+      </div>
+    </aside>
+
+    {%- if cat %}
+    {%- assign related = site.categories[cat] | where_exp: "p", "p.url != page.url" -%}
+    {%- if related.size > 0 %}
+    <section class="related" aria-labelledby="related-title">
+      <h2 class="section-label" id="related-title">Altri articoli in «{{ cs.nome | default: cat }}»</h2>
+      <div class="related-list">
+        {%- for p in related limit: 3 %}
+        <a class="related-item" href="{{ p.url | relative_url }}">
+          <span class="related-media tone-{{ cs.colore }}">
+            {%- if p.header.teaser %}<img src="{{ p.header.teaser | relative_url }}" alt="" loading="lazy">{% else %}<span lang="zh">{{ cs.zh }}</span>{% endif -%}
+          </span>
+          <span class="related-text"><time>{% include date-it.html date=p.date %}</time><strong>{{ p.title }}</strong></span>
+        </a>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+    {%- endif %}
+
+    <nav class="post-nav" aria-label="Altri articoli">
+      {%- if page.previous %}
+      <a class="post-nav-link prev" href="{{ page.previous.url | relative_url }}"><small>← Precedente</small><span>{{ page.previous.title }}</span></a>
+      {%- else %}<span></span>{% endif %}
+      {%- if page.next %}
+      <a class="post-nav-link next" href="{{ page.next.url | relative_url }}"><small>Successivo →</small><span>{{ page.next.title }}</span></a>
+      {%- endif %}
+    </nav>
+  </div>
+</article>

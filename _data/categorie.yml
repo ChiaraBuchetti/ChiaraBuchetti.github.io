@@ -1,0 +1,12 @@
+# Aspetto delle categorie degli articoli.
+# colore: red | yellow | jade | sky | ink     zh: carattere mostrato sulle card senza immagine
+# slug: indirizzo della pagina /blog/<slug>/   desc: frase mostrata nella pagina della categoria
+Notizie:   { zh: "新", colore: "red",    slug: "notizie",    desc: "Eventi, pubblicazioni e novità dalla scuola e dal mondo del cinese." }
+Guide:     { zh: "导", colore: "jade",   slug: "guide",      desc: "Risorse, app, libri e consigli per studiare il cinese." }
+Corsi:     { zh: "课", colore: "sky",    slug: "corsi",      desc: "Corsi, lezioni e attività didattiche." }
+Highlight: { zh: "精", colore: "yellow", slug: "in-evidenza", nome: "In evidenza", desc: "I contenuti da non perdere." }
+high:      { zh: "精", colore: "yellow", nome: "In evidenza" }
+default:   { zh: "文", colore: "ink" }
+
+# ordine delle categorie nella barra del blog
+ordine: ["Notizie", "Guide", "Corsi", "Highlight"]

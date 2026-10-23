@@ -1,0 +1,12 @@
+{%- comment -%}
+  Invito discreto a contattare. Uso: {% include cta.html %}
+  Parametri facoltativi: zh, title, text, label
+{%- endcomment -%}
+<aside class="cta-note" aria-label="Contatti">
+  <span class="cta-seal" lang="zh" aria-hidden="true">{{ include.zh | default: "问" }}</span>
+  <div class="cta-text">
+    <p class="cta-title">{{ include.title | default: "Hai domande o vuoi un preventivo?" }}</p>
+    <p class="cta-sub">{{ include.text | default: "Scrivimi: ti rispondo il prima possibile." }}</p>
+  </div>
+  <a class="btn btn-primary btn-sm" href="{{ '/contatti/' | relative_url }}">{{ include.label | default: "Contattami" }} {% include icon.html name="arrow" px=16 %}</a>
+</aside>

@@ -1,0 +1,39 @@
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    {% include logo.html %}
+    <nav class="main-nav" id="main-nav" aria-label="Menu principale">
+      <ul>
+        {%- for item in site.data.navigation.main -%}
+        {%- assign active = false -%}
+        {%- if page.url contains item.url -%}{%- assign active = true -%}{%- endif -%}
+        {%- if item.url == "/blog/" and page.layout == "post" -%}{%- assign active = true -%}{%- endif -%}
+        <li><a href="{{ item.url | relative_url }}"{% if active %} class="active" aria-current="page"{% endif %}>
+          <span class="nav-zh" lang="zh">{{ item.zh }}</span>
+          <span class="nav-it">{{ item.title }}</span>
+        </a></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn search-toggle" type="button" aria-controls="site-search" aria-expanded="false" aria-label="Cerca nel sito" title="Cerca (tasto /)">{% include icon.html name="search" %}</button>
+      <button class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Apri il menu">
+        <span class="when-closed">{% include icon.html name="menu" %}</span>
+        <span class="when-open">{% include icon.html name="close" %}</span>
+      </button>
+    </div>
+    <div class="site-search" id="site-search" role="search" data-index="{{ '/search.json' | relative_url }}" hidden>
+      <label class="sr-only" for="search-input">Cerca nel sito</label>
+      <span class="site-search-icon" aria-hidden="true">{% include icon.html name="search" px=18 %}</span>
+      <input type="search" id="search-input" placeholder="Cerca articoli e pagine… es. capodanno, calligrafia, 汉字" autocomplete="off" spellcheck="false"
+             role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+      <button class="icon-btn search-close" type="button" aria-label="Chiudi la ricerca">{% include icon.html name="close" px=18 %}</button>
+    </div>
+  </div>
+  <div class="search-panel" id="search-panel" hidden>
+    <div class="container">
+      <p class="search-status" id="search-status" aria-live="polite"></p>
+      <ul class="search-results" id="search-results" role="listbox"></ul>
+    </div>
+  </div>
+</header>
+<div class="search-backdrop" hidden></div>

@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% include page-hero.html %}
+
+{%- if page.subnav %}
+<nav class="container subnav" aria-label="Sezione">
+  {%- for item in site.data.navigation[page.subnav] %}
+  <a href="{{ item.url | relative_url }}" class="pill{% if page.url == item.url %} active{% endif %}">{{ item.title }}</a>
+  {%- endfor %}
+</nav>
+{%- endif %}
+
+<div class="container page-body{% if page.wide %} is-wide{% endif %}">
+  <div class="prose">
+    {{ content }}
+  </div>
+  {%- if page.cta != false %}
+  {% include cta.html %}
+  {%- endif %}
+</div>
+
+

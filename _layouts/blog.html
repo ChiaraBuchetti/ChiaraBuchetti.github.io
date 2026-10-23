@@ -1,0 +1,94 @@
+---
+layout: default
+---
+{%- assign ck = page.categoria -%}
+{%- if ck -%}
+  {%- assign cs = site.data.categorie[ck] | default: site.data.categorie.default -%}
+  {%- assign hero_title = cs.nome | default: ck -%}
+  {% include page-hero.html title=hero_title zh=cs.zh kicker="Blog · categoria" tone=cs.colore %}
+{%- else -%}
+  {% include page-hero.html title="Blog" zh="博客" kicker="Notizie, guide, cultura e didattica" tone="red" %}
+{%- endif %}
+
+<div class="container blog">
+  {% include blog-tabs.html %}
+
+  {%- if ck %}
+  {%- comment -%} ===== Pagina di una categoria: articoli raggruppati per anno ===== {%- endcomment -%}
+  {%- if cs.desc %}<p class="blog-intro">{{ cs.desc }}</p>{% endif %}
+  {%- assign anni = site.categories[ck] | group_by_exp: "p", "p.date | date: '%Y'" -%}
+  {%- if anni.size > 2 %}
+  <nav class="year-jump" aria-label="Vai all'anno">
+    {%- for a in anni %}<a href="#anno-{{ a.name }}">{{ a.name }}</a>{% endfor %}
+  </nav>
+  {%- endif %}
+  {%- for a in anni %}
+  <section class="year-group" id="anno-{{ a.name }}">
+    <h2 class="year-title"><span>{{ a.name }}</span> <small>{{ a.items.size }} articol{% if a.items.size == 1 %}o{% else %}i{% endif %}</small></h2>
+    <div class="card-grid">
+      {%- for post in a.items %}{% include post-card.html post=post %}{% endfor %}
+    </div>
+  </section>
+  {%- endfor %}
+
+  {%- else %}
+  {%- comment -%} ===== Blog: ultimo articolo in evidenza + griglia paginata ===== {%- endcomment -%}
+  {%- assign posts = paginator.posts | default: site.posts -%}
+  {%- if paginator.page == 1 or paginator == nil %}
+    {%- assign primo = posts | first %}
+    {% include post-card.html post=primo feature=true %}
+    <h2 class="section-label">Articoli recenti</h2>
+    <div class="card-grid">
+      {%- for post in posts offset:1 %}{% include post-card.html post=post %}{% endfor %}
+    </div>
+  {%- else %}
+    <h2 class="section-label">Pagina {{ paginator.page }} <small>di {{ paginator.total_pages }}</small></h2>
+    <div class="card-grid">
+      {%- for post in posts %}{% include post-card.html post=post %}{% endfor %}
+    </div>
+  {%- endif %}
+
+  {%- if paginator.total_pages > 1 %}
+  <nav class="pagination" aria-label="Pagine del blog">
+    {%- if paginator.previous_page %}
+    <a class="page-link page-arrow" href="{{ paginator.previous_page_path | relative_url }}" rel="prev" aria-label="Pagina precedente">{% include icon.html name="arrow-left" px=18 %}</a>
+    {%- endif %}
+    {%- for n in (1..paginator.total_pages) %}
+      {%- assign d = n | minus: paginator.page | abs -%}
+      {%- if n == 1 or n == paginator.total_pages or d <= 1 %}
+        {%- if n == 1 %}{% assign href = '/blog/' %}{% else %}{% assign href = site.paginate_path | replace: ':num', n %}{% endif %}
+        {%- if n == paginator.page %}
+        <span class="page-link current" aria-current="page">{{ n }}</span>
+        {%- else %}
+        <a class="page-link" href="{{ href | relative_url }}">{{ n }}</a>
+        {%- endif %}
+      {%- elsif d == 2 %}
+        <span class="page-gap" aria-hidden="true">…</span>
+      {%- endif %}
+    {%- endfor %}
+    {%- if paginator.next_page %}
+    <a class="page-link page-arrow" href="{{ paginator.next_page_path | relative_url }}" rel="next" aria-label="Pagina successiva">{% include icon.html name="arrow" px=18 %}</a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+
+  {%- if paginator.page == 1 %}
+  <section class="cat-explore" aria-labelledby="cat-explore-title">
+    <h2 class="section-label" id="cat-explore-title">Esplora per categoria</h2>
+    <div class="cat-grid">
+      {%- for k in site.data.categorie.ordine %}
+      {%- assign c = site.data.categorie[k] -%}{%- assign n = site.categories[k].size | default: 0 -%}
+      {%- if n > 0 %}
+      <a class="cat-tile tone-{{ c.colore }}" href="{{ '/blog/' | append: c.slug | append: '/' | relative_url }}">
+        <span class="cat-zh" lang="zh" aria-hidden="true">{{ c.zh }}</span>
+        <strong>{{ c.nome | default: k }}</strong>
+        <span>{{ c.desc }}</span>
+        <small>{{ n }} articoli {% include icon.html name="arrow" px=16 %}</small>
+      </a>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+  {%- endif %}
+</div>

@@ -1,0 +1,14 @@
+{%- comment -%} Barra di navigazione del blog: Tutti · categorie · Archivio · Tag {%- endcomment -%}
+<nav class="blog-tabs" aria-label="Sezioni del blog">
+  <a class="tab{% unless page.categoria or include.current %} active{% endunless %}" href="{{ '/blog/' | relative_url }}"{% unless page.categoria or include.current %} aria-current="page"{% endunless %}>Tutti <small>{{ site.posts.size }}</small></a>
+  {%- for tk in site.data.categorie.ordine %}
+  {%- assign tc = site.data.categorie[tk] -%}
+  {%- assign n = site.categories[tk].size | default: 0 -%}
+  {%- if n > 0 %}
+  <a class="tab tab-{{ tc.colore }}{% if page.categoria == tk %} active{% endif %}" href="{{ '/blog/' | append: tc.slug | append: '/' | relative_url }}"{% if page.categoria == tk %} aria-current="page"{% endif %}><span class="tab-zh" lang="zh" aria-hidden="true">{{ tc.zh }}</span>{{ tc.nome | default: tk }} <small>{{ n }}</small></a>
+  {%- endif %}
+  {%- endfor %}
+  <span class="tabs-sep" aria-hidden="true"></span>
+  <a class="tab tab-plain{% if include.current == 'archivio' %} active{% endif %}" href="{{ '/archivio/' | relative_url }}">{% include icon.html name="calendar" px=16 %} Archivio</a>
+  <a class="tab tab-plain{% if include.current == 'tag' %} active{% endif %}" href="{{ '/tag/' | relative_url }}">{% include icon.html name="tag" px=16 %} Tag</a>
+</nav>

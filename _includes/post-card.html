@@ -1,0 +1,26 @@
+{%- comment -%} Uso: {% include post-card.html post=post %}  ·  feature=true per la card grande orizzontale {%- endcomment -%}
+{%- assign p = include.post -%}
+{%- assign cat = p.categories | first -%}
+{%- assign cs = site.data.categorie[cat] | default: site.data.categorie.default -%}
+{%- if include.feature %}{% assign tw = 45 %}{% else %}{% assign tw = 24 %}{% endif -%}
+<article class="card post-card tone-{{ cs.colore }}{% if include.feature %} card-feature{% endif %}">
+  <a class="card-media" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {%- if p.header.teaser -%}
+      <img src="{{ p.header.teaser | relative_url }}" alt="" loading="{% if include.feature %}eager{% else %}lazy{% endif %}">
+    {%- else -%}
+      <span class="card-glyph" lang="zh">{{ cs.zh }}</span>
+    {%- endif -%}
+  </a>
+  <div class="card-body">
+    <div class="card-meta">
+      {%- if include.feature %}<span class="chip chip-ink">Ultimo articolo</span>{% endif -%}
+      {%- if cat -%}<span class="chip chip-{{ cs.colore }}">{{ cs.nome | default: cat }}</span>{%- endif -%}
+      <time datetime="{{ p.date | date_to_xmlschema }}">{% include date-it.html date=p.date %}</time>
+    </div>
+    <h3 class="card-title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <p class="card-excerpt">{{ p.excerpt | strip_html | normalize_whitespace | truncatewords: tw }}</p>
+    {%- if include.feature %}
+    <span class="card-more">Leggi l'articolo {% include icon.html name="arrow" px=18 %}</span>
+    {%- endif %}
+  </div>
+</article>

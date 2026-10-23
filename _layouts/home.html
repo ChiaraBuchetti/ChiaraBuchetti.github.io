@@ -1,0 +1,128 @@
+---
+layout: default
+---
+{%- assign h = page.hero -%}
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="blob blob-red"></span>
+    <span class="blob blob-yellow"></span>
+    <span class="blob blob-jade"></span>
+    <span class="lattice"></span>
+  </div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span lang="zh">{{ h.eyebrow_zh }}</span> {{ h.eyebrow }}</p>
+      <h1>{{ h.title }} <span class="hl" lang="zh">{{ h.title_zh }}</span></h1>
+      <p class="lead">{{ h.text }}</p>
+      <div class="btn-row">
+        {%- for a in h.actions %}
+        <a class="btn {% if forloop.first %}btn-primary{% else %}btn-outline{% endif %}" href="{{ a.url | relative_url }}">{{ a.label }}{% if forloop.first %} {% include icon.html name="arrow" %}{% endif %}</a>
+        {%- endfor %}
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="moon-gate">
+        <span class="gate-char" lang="zh">{{ h.art_char }}</span>
+        <span class="gate-pinyin">{{ h.art_pinyin }}</span>
+      </div>
+      <span class="bubble bubble-1" lang="zh">你好!</span>
+      <span class="bubble bubble-2">nǐ hǎo</span>
+      <span class="bubble bubble-3" lang="zh">加油</span>
+      <span class="hero-vertical" lang="zh">{{ h.vertical }}</span>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    {%- for i in (1..2) -%}
+    {%- for r in page.ribbon -%}<span>{{ r }}</span><span class="ribbon-dot" lang="zh">✦</span>{%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<section class="section container">
+  <div class="section-head">
+    <p class="kicker" lang="zh">探索</p>
+    <h2>Esplora il sito</h2>
+  </div>
+  <div class="explore-grid">
+    {%- for e in page.explore %}
+    <a class="explore-card tone-{{ e.tone }}" href="{{ e.url | relative_url }}">
+      <span class="explore-zh" lang="zh" aria-hidden="true">{{ e.zh }}</span>
+      <span class="explore-icon">{% include icon.html name=e.icon px=26 %}</span>
+      <h3>{{ e.title }}</h3>
+      <p>{{ e.text }}</p>
+      <span class="explore-more">Vai {% include icon.html name="arrow" px=18 %}</span>
+    </a>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container hanzi-wrap">
+    <div class="section-head left">
+      <p class="kicker" lang="zh">每日一字</p>
+      <h2>Il carattere del giorno</h2>
+      <p>Ogni giorno un carattere cinese da imparare, con la sua pronuncia in <em>pinyin</em> e una parola di esempio.</p>
+      <button class="btn btn-outline js-hanzi-next" type="button">{% include icon.html name="refresh" px=18 %} Un altro!</button>
+    </div>
+    <div class="hanzi-card" id="hanzi-card" aria-live="polite">
+      {%- assign z = site.data.hanzi | first -%}
+      <div class="hanzi-grid"><span class="hanzi-char" lang="zh">{{ z.h }}</span></div>
+      <div class="hanzi-info">
+        <p class="hanzi-py">{{ z.py }}</p>
+        <p class="hanzi-it">{{ z.it }}</p>
+        <p class="hanzi-ex"><span lang="zh">{{ z.es }}</span> <em>{{ z.espy }}</em> — {{ z.esit }}</p>
+      </div>
+    </div>
+    <script type="application/json" id="hanzi-data">{{ site.data.hanzi | jsonify }}</script>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-head split">
+    <div>
+      <p class="kicker" lang="zh">最新文章</p>
+      <h2>Dal blog</h2>
+    </div>
+    <a class="btn btn-outline" href="{{ '/blog/' | relative_url }}">Tutti gli articoli {% include icon.html name="arrow" %}</a>
+  </div>
+  <div class="card-grid">
+    {%- for post in site.posts limit: 3 %}
+      {% include post-card.html post=post %}
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section section-ink">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker" lang="zh">我的书</p>
+      <h2>I miei libri</h2>
+    </div>
+    <div class="books">
+      {%- for b in page.books %}
+      <article class="book">
+        <div class="book-cover tone-{{ b.tone }}" aria-hidden="true">
+          <span class="book-zh" lang="zh">{{ b.zh }}</span>
+          <span class="book-title">{{ b.title }}</span>
+          <span class="book-pub">{{ b.publisher }}</span>
+        </div>
+        <div class="book-info">
+          <p class="kicker">{{ b.year }} · {{ b.publisher }}</p>
+          <h3>{{ b.title }}</h3>
+          <p>{{ b.text }}</p>
+          {%- if b.url %}<a class="link-arrow" href="{{ b.url | relative_url }}">Scopri di più {% include icon.html name="arrow" px=18 %}</a>{% endif %}
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="container home-cta">
+  {% include cta.html zh="学" title="Lezioni, traduzioni, mediazione" text="Hai bisogno di un corso, di una traduzione o di un supporto per la tua azienda? Parliamone." label="Scrivimi" %}
+</section>
+
+{{ content }}

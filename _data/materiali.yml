@@ -1,0 +1,52 @@
+# Elenco del materiale didattico mostrato in /materiale-didattico/
+# - `file`: percorso di un file caricato in assets/materiali/
+# - `url`:  link esterno (Genially, Google Drive, ...)
+# Le voci senza `file` né `url` vengono mostrate come "in arrivo".
+
+- gruppo: "Introduzione alla scrittura cinese"
+  voci:
+    - titolo: "Introduzione alla scrittura cinese (PDF)"
+      file: "/assets/materiali/introduzione-alla-scrittura-cinese.pdf"
+    - titolo: "Introduzione alla scrittura cinese (iBooks)"
+      file: "/assets/materiali/introduzione-alla-scrittura-cinese.ibooks"
+
+- gruppo: "Schede per la scrittura dei caratteri"
+  voci:
+    - titolo: "Griglia 1"
+      file: "/assets/materiali/griglia-1.pdf"
+    - titolo: "Griglia 2"
+      file: "/assets/materiali/griglia-2.pdf"
+    - titolo: "Griglia 3"
+      file: "/assets/materiali/griglia-3.pdf"
+
+- gruppo: "Presentazioni interattive"
+  voci:
+    - titolo: "Introduzione al cinese (Genially)"
+      url: "https://view.genial.ly/5f68b5662e56340d807cc44d/presentation-introduzione-al-cinese"
+    - titolo: "Radicali (Genially)"
+      url: "https://view.genial.ly/635aad4c47601b0018c92e3e/interactive-content-radicali"
+    - titolo: "Cinese per viaggi e turismo (Genially)"
+      url: "https://view.genially.com/68ce8512bb23775fddd6eec7/guide-corso-potenziamento-cinese-per-viaggi-e-turismo"
+    - titolo: "Presentazione anno di prova (Genially)"
+      url: "https://view.genial.ly/5ed7cb86bacf2c0da6557ab0/presentation-presentazione-anno-di-prova-buchetti"
+    - titolo: "Teen zone Pesenti"
+      file: "/assets/materiali/teen-zone-2022.pdf"
+
+- gruppo: "Guide"
+  voci:
+    - titolo: "Guida di Pechino"
+      file: "/assets/materiali/guida-di-pechino.pdf"
+
+- gruppo: "Tesine di maturità 2016"
+  voci:
+    - titolo: "Le filosofie dell'armonia"
+      file: "/assets/materiali/tesina-2016-filosofie-armonia.pdf"
+    - titolo: "Cina: diritti umani violati"
+      file: "/assets/materiali/tesina-2016-diritti-umani.pdf"
+    - titolo: "Rapporto uomo-natura"
+      file: "/assets/materiali/tesina-2016-uomo-natura.pdf"
+
+- gruppo: "Linux Day 2014"
+  voci:
+    - titolo: "Linux Day 2014"
+      file: "/assets/materiali/linux-day-2014.pdf"

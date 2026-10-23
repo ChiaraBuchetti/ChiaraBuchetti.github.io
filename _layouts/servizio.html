@@ -1,0 +1,53 @@
+---
+layout: default
+---
+{%- comment -%}
+  Pagina di un servizio linguistico.
+  Front matter: servizio (id in _data/servizi.yml), in_breve (elenco {icon, label, value}).
+{%- endcomment -%}
+{%- assign sv = site.data.servizi | where: "id", page.servizio | first -%}
+{% include page-hero.html kicker="Servizi linguistici" tone=sv.colore zh=sv.zh %}
+
+<div class="container service-page">
+  {% include servizi-tabs.html %}
+
+  <div class="service-layout">
+    <div class="prose service-main tone-{{ sv.colore }}">
+      {{ content }}
+    </div>
+
+    <aside class="service-aside tone-{{ sv.colore }}" aria-label="In breve">
+      <div class="aside-card">
+        <div class="aside-head">
+          <span class="aside-seal" lang="zh" aria-hidden="true">{{ sv.zh }}</span>
+          <div><p class="kicker">In breve</p><p class="aside-title">{{ sv.breve }}</p></div>
+        </div>
+        {%- if sv.lingue %}
+        <p class="aside-label">Lingue</p>
+        <ul class="lang-chips">{% for l in sv.lingue %}<li>{{ l }}</li>{% endfor %}</ul>
+        {%- endif %}
+        {%- if page.in_breve %}
+        <dl class="aside-facts">
+          {%- for f in page.in_breve %}
+          <div><dt>{% include icon.html name=f.icon px=18 %} {{ f.label }}</dt><dd>{{ f.value }}</dd></div>
+          {%- endfor %}
+        </dl>
+        {%- endif %}
+        <a class="btn btn-primary aside-btn" href="{{ '/contatti/' | relative_url }}?servizio={{ sv.form | url_encode }}">Richiedi informazioni {% include icon.html name="arrow" px=18 %}</a>
+        <p class="aside-note">Tariffe, preventivi, disponibilità e orari su richiesta.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="other-services" aria-labelledby="other-services-title">
+    <h2 class="section-label" id="other-services-title">Altri servizi</h2>
+    <div class="mini-services">
+      {%- for o in site.data.servizi %}{% if o.id != sv.id %}
+      {%- if o.url %}<a class="mini-service tone-{{ o.colore }}" href="{{ o.url | relative_url }}">{% else %}<a class="mini-service tone-{{ o.colore }}" href="{{ '/contatti/' | relative_url }}?servizio={{ o.form | url_encode }}">{% endif %}
+        <span class="mini-zh" lang="zh" aria-hidden="true">{{ o.zh }}</span>
+        <span><strong>{{ o.titolo }}</strong><small>{% if o.url %}Scopri il servizio{% else %}Su richiesta{% endif %}</small></span>
+      </a>
+      {%- endif %}{% endfor %}
+    </div>
+  </section>
+</div>

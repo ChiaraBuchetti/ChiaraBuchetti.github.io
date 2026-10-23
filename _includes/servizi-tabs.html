@@ -1,0 +1,9 @@
+{%- comment -%} Barra delle pagine dei servizi (stesso stile della barra del blog) {%- endcomment -%}
+<nav class="blog-tabs service-tabs" aria-label="Servizi linguistici">
+  {%- assign panoramica = "/servizi-linguistici/" -%}
+  <a class="tab{% if page.url == panoramica %} active{% endif %}" href="{{ panoramica | relative_url }}"{% if page.url == panoramica %} aria-current="page"{% endif %}>Tutti i servizi</a>
+  <span class="tabs-sep" aria-hidden="true"></span>
+  {%- for sv in site.data.servizi %}{% if sv.url %}
+  <a class="tab tab-{{ sv.colore }}{% if page.url == sv.url %} active{% endif %}" href="{{ sv.url | relative_url }}"{% if page.url == sv.url %} aria-current="page"{% endif %}><span class="tab-zh" lang="zh" aria-hidden="true">{{ sv.zh }}</span>{{ sv.breve }}</a>
+  {%- endif %}{% endfor %}
+</nav>

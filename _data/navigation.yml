@@ -1,0 +1,12 @@
+# Menu principale. `zh` è l'etichetta cinese mostrata sopra la voce.
+main:
+  - { title: "Chi sono",           zh: "关于我", url: "/chi-sono/" }
+  - { title: "Blog",               zh: "博客",   url: "/blog/" }
+  - { title: "Materiali",          zh: "教材",   url: "/materiale-didattico/" }
+  - { title: "Servizi",            zh: "服务",   url: "/servizi-linguistici/" }
+  - { title: "Contatti",           zh: "联系",   url: "/contatti/" }
+
+# Sotto-menu delle pagine dei servizi: generato da _data/servizi.yml
+# (resta qui solo la voce della panoramica)
+servizi:
+  - { title: "Panoramica", url: "/servizi-linguistici/" }

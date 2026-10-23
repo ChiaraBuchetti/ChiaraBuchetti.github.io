@@ -1,0 +1,102 @@
+# =====================================================================
+# Configurazione del sito — Chiara Buchetti
+# Dopo ogni modifica a questo file riavviare `bundle exec jekyll serve`.
+# =====================================================================
+
+title: "Chiara Buchetti"
+tagline: "Lingua e cultura cinese"
+description: >-
+  Sito di Chiara Buchetti, docente di lingua e cultura cinese nella scuola
+  secondaria di II grado: didattica del cinese, materiali, servizi linguistici.
+lang: it
+locale: it_IT
+timezone: Europe/Rome
+
+# URL definitivo: aggiornarlo quando il repo verrà spostato / collegato al dominio
+url: "https://www.chiarabuchetti.it"
+baseurl: ""
+
+# Usato da jekyll-seo-tag (anteprime social, Google)
+author:
+  name: "Chiara Buchetti"
+  photo: "/assets/images/chiara-buchetti.jpg"   # se manca viene mostrato un segnaposto
+  bio: "Docente di lingua e cultura cinese, autrice e traduttrice."
+logo: "/assets/images/logo.png"
+social:
+  name: "Chiara Buchetti"
+  links:
+    - "https://www.facebook.com/CineseStudioTraduzione/"
+    - "https://www.instagram.com/chiarabuchetti/"
+    - "https://www.linkedin.com/in/chiara-buchetti-97100034"
+
+# Icone social in header/footer (icone disponibili: facebook, instagram, linkedin, mail)
+social_links:
+  - { name: "Facebook",  icon: "facebook",  url: "https://www.facebook.com/CineseStudioTraduzione/" }
+  - { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/chiarabuchetti/" }
+  - { name: "LinkedIn",  icon: "linkedin",  url: "https://www.linkedin.com/in/chiara-buchetti-97100034" }
+
+# --- Modulo contatti (servizio esterno, il sito è statico) ------------
+# service: "formsubmit" (gratuito, accetta allegati, nessun account)
+#          oppure "formspree" (allegati solo nei piani a pagamento)
+# endpoint: per FormSubmit l'email di destinazione; dopo il primo invio
+#           FormSubmit manda una mail di attivazione con un codice alias
+#           (es. "a1b2c3d4e5...") da incollare qui al posto dell'email,
+#           così l'indirizzo non resta visibile nel codice della pagina.
+#           Per Formspree l'ID del form (es. "xyzabcd").
+# Se endpoint è vuoto la pagina Contatti mostra solo i social.
+contact_form:
+  service: "formsubmit"
+  endpoint: "chiara.buchetti@gmail.com"
+
+# --- Scrittura ---------------------------------------------------------
+markdown: kramdown
+highlighter: rouge
+excerpt_separator: "\n\n"
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  entity_output: as_char
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+# --- Struttura --------------------------------------------------------
+include:
+  - _pages
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - tools/
+  - _wp-export/
+  - _importate/
+  - vendor/
+  - .idea/
+
+# Permalink identici a WordPress (/titolo-articolo/) per non perdere
+# i link esistenti e il posizionamento sui motori di ricerca.
+permalink: /:title/
+
+paginate: 10
+paginate_path: /blog/page:num/
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: page

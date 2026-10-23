@@ -1,0 +1,14 @@
+<section class="page-hero tone-{{ include.tone | default: page.tone | default: 'red' }}">
+  <div class="hero-shapes" aria-hidden="true">
+    <span class="shape shape-circle"></span><span class="shape shape-lattice"></span><span class="shape shape-arch"></span>
+  </div>
+  <div class="container page-hero-inner">
+    <div class="page-hero-text">
+      {%- if include.kicker %}<p class="kicker">{{ include.kicker }}</p>{% endif %}
+      <h1>{{ include.title | default: page.title }}</h1>
+      {%- if page.subtitle %}<p class="lead">{{ page.subtitle }}</p>{% endif %}
+    </div>
+    {%- assign zh = include.zh | default: page.zh -%}
+    {%- if zh %}<span class="hero-zh" lang="zh" aria-hidden="true">{{ zh }}</span>{% endif -%}
+  </div>
+</section>

@@ -1,0 +1,6 @@
+{%- comment -%} Foto dell'autrice; se il file non esiste mostra un segnaposto con il carattere 师 (maestra). {%- endcomment -%}
+{%- assign photo = site.static_files | where: "path", site.author.photo | first -%}
+<span class="avatar{% if include.big %} avatar-big{% endif %}">
+  {%- if photo -%}<img src="{{ site.author.photo | relative_url }}" alt="{{ site.author.name }}">
+  {%- else -%}<span lang="zh" aria-hidden="true">师</span>{%- endif -%}
+</span>

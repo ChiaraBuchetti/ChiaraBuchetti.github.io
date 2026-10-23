@@ -1,0 +1,14 @@
+---
+layout: null
+sitemap: false
+---
+[
+{%- for p in site.posts -%}
+{%- assign ck = p.categories | first -%}{%- assign cs = site.data.categorie[ck] | default: site.data.categorie.default -%}
+{"t":{{ p.title | jsonify }},"u":{{ p.url | relative_url | jsonify }},"d":{{ p.date | date: "%d/%m/%Y" | jsonify }},"k":{{ cs.nome | default: ck | jsonify }},"c":{{ p.content | strip_html | normalize_whitespace | truncatewords: 400 | jsonify }}},
+{%- endfor -%}
+{%- for p in site.pages -%}{%- if p.title and p.sitemap != false and p.url != "/404.html" -%}
+{"t":{{ p.title | jsonify }},"u":{{ p.url | relative_url | jsonify }},"d":"","k":"Pagina","c":{{ p.content | strip_html | normalize_whitespace | truncatewords: 300 | jsonify }}},
+{%- endif -%}{%- endfor -%}
+{}
+]

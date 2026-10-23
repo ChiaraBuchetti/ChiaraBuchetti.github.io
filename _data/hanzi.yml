@@ -1,0 +1,32 @@
+# "Carattere del giorno" in home page: ne viene mostrato uno diverso ogni giorno.
+# Aggiungere o modificare liberamente le voci.
+- { h: "你", py: "nǐ",    it: "tu",                 es: "你好",   espy: "nǐ hǎo",     esit: "ciao" }
+- { h: "好", py: "hǎo",   it: "buono, bene",        es: "很好",   espy: "hěn hǎo",    esit: "molto bene" }
+- { h: "爱", py: "ài",    it: "amare",              es: "爱好",   espy: "àihào",      esit: "hobby, passione" }
+- { h: "学", py: "xué",   it: "studiare",           es: "学生",   espy: "xuéshēng",   esit: "studente" }
+- { h: "中", py: "zhōng", it: "centro, mezzo",      es: "中文",   espy: "Zhōngwén",   esit: "lingua cinese" }
+- { h: "国", py: "guó",   it: "paese, nazione",     es: "中国",   espy: "Zhōngguó",   esit: "Cina" }
+- { h: "人", py: "rén",   it: "persona",            es: "中国人", espy: "Zhōngguórén", esit: "cinese (persona)" }
+- { h: "大", py: "dà",    it: "grande",             es: "大学",   espy: "dàxué",      esit: "università" }
+- { h: "小", py: "xiǎo",  it: "piccolo",            es: "小心",   espy: "xiǎoxīn",    esit: "attenzione!" }
+- { h: "山", py: "shān",  it: "montagna",           es: "火山",   espy: "huǒshān",    esit: "vulcano" }
+- { h: "水", py: "shuǐ",  it: "acqua",              es: "喝水",   espy: "hē shuǐ",    esit: "bere acqua" }
+- { h: "火", py: "huǒ",   it: "fuoco",              es: "火车",   espy: "huǒchē",     esit: "treno" }
+- { h: "木", py: "mù",    it: "albero, legno",      es: "木头",   espy: "mùtou",      esit: "legno" }
+- { h: "日", py: "rì",    it: "sole, giorno",       es: "生日",   espy: "shēngrì",    esit: "compleanno" }
+- { h: "月", py: "yuè",   it: "luna, mese",         es: "月亮",   espy: "yuèliang",   esit: "luna" }
+- { h: "天", py: "tiān",  it: "cielo, giorno",      es: "今天",   espy: "jīntiān",    esit: "oggi" }
+- { h: "心", py: "xīn",   it: "cuore",              es: "开心",   espy: "kāixīn",     esit: "contento" }
+- { h: "口", py: "kǒu",   it: "bocca",              es: "人口",   espy: "rénkǒu",     esit: "popolazione" }
+- { h: "马", py: "mǎ",    it: "cavallo",            es: "马上",   espy: "mǎshàng",    esit: "subito" }
+- { h: "龙", py: "lóng",  it: "drago",              es: "龙舟",   espy: "lóngzhōu",   esit: "barca del drago" }
+- { h: "茶", py: "chá",   it: "tè",                 es: "绿茶",   espy: "lǜchá",      esit: "tè verde" }
+- { h: "书", py: "shū",   it: "libro",              es: "书包",   espy: "shūbāo",     esit: "zaino" }
+- { h: "朋", py: "péng",  it: "amico",              es: "朋友",   espy: "péngyou",    esit: "amico" }
+- { h: "家", py: "jiā",   it: "casa, famiglia",     es: "大家",   espy: "dàjiā",      esit: "tutti" }
+- { h: "猫", py: "māo",   it: "gatto",              es: "熊猫",   espy: "xióngmāo",   esit: "panda" }
+- { h: "花", py: "huā",   it: "fiore",              es: "花园",   espy: "huāyuán",    esit: "giardino" }
+- { h: "雨", py: "yǔ",    it: "pioggia",            es: "下雨",   espy: "xià yǔ",     esit: "piovere" }
+- { h: "春", py: "chūn",  it: "primavera",          es: "春节",   espy: "Chūnjié",    esit: "Festa di Primavera" }
+- { h: "福", py: "fú",    it: "fortuna, felicità",  es: "幸福",   espy: "xìngfú",     esit: "felicità" }
+- { h: "笑", py: "xiào",  it: "ridere, sorridere",  es: "笑话",   espy: "xiàohua",    esit: "barzelletta" }

@@ -1,0 +1,17 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+Gemfile.lock
+
+# Export WordPress (contiene dati non pubblici: non versionare)
+_wp-export/
+_importate/
+
+# IDE / OS
+.idea/
+.DS_Store
+__pycache__/
