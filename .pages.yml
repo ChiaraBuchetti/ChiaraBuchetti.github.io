@@ -123,6 +123,9 @@ content:
     type: collection
     path: _posts/wordpress
     format: yaml-frontmatter
+    # Pages CMS mostra solo i file con l'estensione del modello di nome:
+    # gli articoli importati sono .html (senza questa riga l'elenco resta vuoto)
+    filename: "{year}-{month}-{day}-{primary}.html"
     operations:
       create: false        # i nuovi articoli si scrivono in «Articoli»
       rename: false
