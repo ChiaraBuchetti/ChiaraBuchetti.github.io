@@ -1,6 +1,6 @@
 ---
 title: "Benvenuti nel nuovo sito"
-date: 2026-10-23 10:00:00 +0200
+date: 2026-10-23 10:00:00
 categories: [Notizie]
 tags: [cinese]
 published: true
