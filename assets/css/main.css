@@ -1080,3 +1080,22 @@ a.svc-card-cta:hover { color: #fff; border-color: var(--ink); box-shadow: 6px 6p
 @media (max-width: 620px) {
   .service-cards, .mini-services, .feature-grid-2 { grid-template-columns: 1fr; }
 }
+
+/* ── Carousel automatico per immagini consecutive nel prose ── */
+.prose-carousel{position:relative;margin:1.8rem 0;outline:none;}
+.prose-carousel:focus-visible{outline:3px solid var(--sky);outline-offset:4px;border-radius:var(--radius-s);}
+.pcar-track{overflow:hidden;border-radius:var(--radius-s);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--yellow);background:var(--cream);}
+.pcar-slides{display:flex;transition:transform .38s cubic-bezier(.4,0,.2,1);will-change:transform;}
+.pcar-slide{flex:0 0 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;}
+.pcar-slide img{width:100%;max-height:480px;object-fit:contain;display:block;margin:0!important;border-radius:0;border:none;box-shadow:none;}
+.pcar-slide figcaption{width:100%;text-align:center;color:var(--muted);font-size:.88rem;padding:.5rem 1rem .6rem;background:var(--cream);line-height:1.4;}
+.pcar-btn{position:absolute;top:calc(50% - 1.4rem);transform:translateY(-50%);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;box-shadow:3px 3px 0 var(--yellow);transition:box-shadow .15s,transform .15s;z-index:2;font-size:1.5rem;line-height:1;padding:0;}
+.pcar-btn:hover{box-shadow:5px 5px 0 var(--yellow);}
+.pcar-btn:active{transform:translateY(calc(-50% + 2px)) translateX(2px);box-shadow:2px 2px 0 var(--yellow);}
+.pcar-prev{left:.7rem;}.pcar-next{right:.7rem;}
+.pcar-footer{display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.7rem 0 .2rem;}
+.pcar-dots{display:flex;gap:.45rem;}
+.pcar-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--ink);background:transparent;cursor:pointer;padding:0;transition:background .2s,border-color .2s,transform .2s;}
+.pcar-dot.is-active{background:var(--red);border-color:var(--red);transform:scale(1.2);}
+.pcar-counter{font-size:.82rem;color:var(--muted);font-family:var(--font-head);font-weight:600;letter-spacing:.03em;}
+@media(max-width:600px){.pcar-btn{width:34px;height:34px;font-size:1.2rem;}.pcar-slide img{max-height:300px;}}
