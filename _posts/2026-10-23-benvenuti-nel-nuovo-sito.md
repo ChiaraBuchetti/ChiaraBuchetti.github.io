@@ -24,7 +24,7 @@ header:
   <span class="callout-icon" lang="zh">新</span>
   <div>
     <strong>Cosa è cambiato</strong><br>
-    Il vecchio sito WordPress è stato sostituito da un sito statico Jekyll, molto più veloce da caricare e semplice da mantenere. Tutti gli articoli pubblicati negli anni restano disponibili agli stessi indirizzi di prima.
+    Il sito è stato completamente rinnovato, risultando molto più veloce da caricare. Tutti gli articoli pubblicati negli anni restano disponibili agli stessi indirizzi di prima.
   </div>
 </div>
 
