@@ -1,0 +1,53 @@
+name: Build & Deploy Jekyll
+
+on:
+  push:
+    branches: ["main"]          # avvia la build ad ogni push su main
+  workflow_dispatch:             # permette di lanciare la build a mano
+
+# Permessi minimi per pubblicare su GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una sola deploy alla volta; annulla quella precedente se ce n'è già una in coda
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true      # esegue `bundle install` e mette in cache le gem
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
