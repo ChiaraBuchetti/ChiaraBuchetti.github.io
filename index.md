@@ -8,8 +8,8 @@ hero:
   title: "Ciao, sono Chiara!"
   title_zh: "你好"
   text: "Insegno lingua e cultura cinese al liceo, scrivo libri per la scuola e lavoro come traduttrice e mediatrice. Qui trovi materiali per studiare, notizie sulla Cina e i miei servizi linguistici."
-  art_char: "学"
-  art_pinyin: "xué · studiare"
+  art_char: "CB"
+  art_pinyin: "汉语"
   vertical: "学而时习之"
   actions:
     - { label: "Leggi il blog", url: "/blog/" }
