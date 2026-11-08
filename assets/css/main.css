@@ -219,8 +219,8 @@ p { margin: 0 0 1em; }
   content: ""; position: absolute; inset: 9%; border-radius: 50%;
   border: 3px dashed rgba(255, 255, 255, .45);
 }
-.gate-char { font-family: var(--font-head); color: #fff; font-size: clamp(1.1rem, 2.8vw, 1.7rem); line-height: 1; font-weight: 500; letter-spacing: .32em; opacity: .88; text-transform: uppercase; }
-.gate-pinyin { font-family: var(--font-fun); color: #fff; font-size: clamp(3.4rem, 9vw, 6rem); font-weight: 700; letter-spacing: .04em; opacity: .97; line-height: 1; }
+.gate-char { font-family: Georgia, "Palatino Linotype", Palatino, serif; color: #fff; font-size: clamp(1.9rem, 4.8vw, 3rem); line-height: 1; font-weight: 400; letter-spacing: .22em; opacity: .95; text-transform: uppercase; }
+.gate-pinyin { font-family: var(--font-fun); color: #fff; font-size: clamp(2.8rem, 7.5vw, 5rem); font-weight: 700; letter-spacing: .04em; opacity: .97; line-height: 1.05; }
 .bubble {
   position: absolute; background: #fff; border: 2px solid var(--ink); border-radius: 18px;
   padding: .45rem .9rem; font-family: var(--font-head); font-weight: 700; box-shadow: 3px 3px 0 var(--ink);
