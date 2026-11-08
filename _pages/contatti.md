@@ -35,7 +35,6 @@ image:
         <option value="Traduzione">Traduzione e localizzazione</option>
         <option value="Mediazione">Mediazione linguistica e culturale</option>
         <option value="Consulenza">Consulenza per l'impresa</option>
-        <option value="Interpretariato">Interpretariato di trattativa</option>
         <option value="Collaborazione">Proposta di collaborazione</option>
       </select>
     </label>

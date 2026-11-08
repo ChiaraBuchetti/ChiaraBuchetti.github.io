@@ -1,7 +1,7 @@
 ---
 title: "Servizi linguistici"
 zh: "服务"
-subtitle: "Traduzione, mediazione, lezioni e consulenza per cinese, inglese, tedesco e francese."
+subtitle: "Traduzione, mediazione, lezioni e consulenza per la lingua cinese e inglese."
 permalink: /servizi-linguistici/
 tone: "jade"
 layout: default
@@ -23,7 +23,6 @@ image:
         <li><span lang="zh">中文</span> Cinese</li>
         <li>Inglese</li>
         <li>Tedesco</li>
-        <li>Francese</li>
         <li>Italiano per stranieri</li>
       </ul>
     </div>

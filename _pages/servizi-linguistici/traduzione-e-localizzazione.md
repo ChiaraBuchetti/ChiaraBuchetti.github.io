@@ -1,7 +1,7 @@
 ---
 title: "Traduzione e localizzazione"
 zh: "译"
-subtitle: "Traduzioni verso l'italiano da cinese, inglese, tedesco e francese, e localizzazione di siti web."
+subtitle: "Traduzioni verso l'italiano da cinese e inglese, e localizzazione di siti web."
 permalink: /servizi-linguistici/traduzione-e-localizzazione/
 layout: servizio
 servizio: traduzione
@@ -14,13 +14,11 @@ image:
   width: 1200
   height: 630
 ---
-<p class="service-lead">Si effettuano traduzioni da cinese, inglese, tedesco e francese verso l'italiano, per privati e aziende.</p>
+<p class="service-lead">Si effettuano traduzioni da cinese e inglese verso l'italiano, per privati e aziende.</p>
 
 <div class="pair-grid" aria-label="Combinazioni linguistiche">
   <div class="pair"><span lang="zh">中文</span><span class="pair-arrow" aria-hidden="true">→</span><span>Italiano</span><small>ZH › IT</small></div>
   <div class="pair"><span>English</span><span class="pair-arrow" aria-hidden="true">→</span><span>Italiano</span><small>EN › IT</small></div>
-  <div class="pair"><span>Deutsch</span><span class="pair-arrow" aria-hidden="true">→</span><span>Italiano</span><small>DE › IT</small></div>
-  <div class="pair"><span>Français</span><span class="pair-arrow" aria-hidden="true">→</span><span>Italiano</span><small>FR › IT</small></div>
 </div>
 
 <h2>Tipologie di traduzione</h2>

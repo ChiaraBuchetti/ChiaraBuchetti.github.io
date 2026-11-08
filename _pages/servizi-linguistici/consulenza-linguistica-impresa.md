@@ -19,7 +19,7 @@ image:
   <div class="feature">
     <span class="feature-icon">{% include icon.html name="mail" %}</span>
     <h3>Corrispondenza estera</h3>
-    <p>Gestione della corrispondenza in cinese, inglese e tedesco.</p>
+    <p>Gestione della corrispondenza in cinese e inglese.</p>
   </div>
   <div class="feature">
     <span class="feature-icon">{% include icon.html name="flag" %}</span>
@@ -29,7 +29,7 @@ image:
   <div class="feature">
     <span class="feature-icon">{% include icon.html name="handshake" %}</span>
     <h3>Clienti stranieri</h3>
-    <p>Gestione <em>incoming</em> di clienti stranieri (cinese, inglese, tedesco).</p>
+    <p>Gestione <em>incoming</em> di clienti stranieri (cinese, inglese).</p>
   </div>
   <div class="feature">
     <span class="feature-icon">{% include icon.html name="globe" %}</span>
@@ -38,4 +38,4 @@ image:
   </div>
 </div>
 
-<p class="service-more">Per le aziende sono disponibili anche <a href="{{ '/servizi-linguistici/traduzione-e-localizzazione/' | relative_url }}">traduzioni</a>, <a href="{{ '/servizi-linguistici/lezioni-private-e-corsi/' | relative_url }}">corsi di cinese commerciale</a> e interpretariato di trattativa.</p>
+<p class="service-more">Per le aziende sono disponibili anche <a href="{{ '/servizi-linguistici/traduzione-e-localizzazione/' | relative_url }}">traduzioni</a> e <a href="{{ '/servizi-linguistici/lezioni-private-e-corsi/' | relative_url }}">corsi di cinese commerciale</a>.</p>

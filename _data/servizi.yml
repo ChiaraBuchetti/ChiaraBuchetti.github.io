@@ -10,8 +10,8 @@
   colore: red
   url: /servizi-linguistici/lezioni-private-e-corsi/
   form: Lezioni
-  desc: "Cinese, inglese, tedesco, francese e italiano per stranieri: individuali o in piccoli gruppi, in presenza o online."
-  lingue: ["Cinese", "Inglese", "Tedesco", "Francese", "Italiano L2"]
+  desc: "Cinese, inglese e italiano per stranieri: individuali o in piccoli gruppi, in presenza a Pisa o online."
+  lingue: ["Cinese", "Inglese", "Italiano L2"]
 
 - id: traduzione
   titolo: "Traduzione e localizzazione"
@@ -21,8 +21,8 @@
   colore: yellow
   url: /servizi-linguistici/traduzione-e-localizzazione/
   form: Traduzione
-  desc: "Traduzioni verso l'italiano da cinese, inglese, tedesco e francese: testi giuridici, tecnici, pubblicitari e siti web."
-  lingue: ["ZH › IT", "EN › IT", "DE › IT", "FR › IT"]
+  desc: "Traduzioni verso l'italiano da cinese e inglese: testi giuridici, tecnici, pubblicitari e siti web."
+  lingue: ["ZH › IT", "EN › IT"]
 
 - id: mediazione
   titolo: "Mediazione linguistica e culturale"
@@ -44,14 +44,4 @@
   url: /servizi-linguistici/consulenza-linguistica-impresa/
   form: Consulenza
   desc: "Corrispondenza estera, fiere internazionali, clienti stranieri e localizzazione per il mercato cinese."
-  lingue: ["Cinese", "Inglese", "Tedesco"]
-
-- id: interpretariato
-  titolo: "Interpretariato di trattativa"
-  breve: "Interpretariato"
-  zh: "谈"
-  pinyin: "tán"
-  colore: ink
-  form: Interpretariato
-  desc: "Interpretariato durante incontri e trattative commerciali, su richiesta."
   lingue: ["Cinese", "Inglese"]

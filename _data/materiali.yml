@@ -31,22 +31,3 @@
       url: "https://view.genial.ly/5ed7cb86bacf2c0da6557ab0/presentation-presentazione-anno-di-prova-buchetti"
     - titolo: "Teen zone Pesenti"
       file: "/assets/materiali/teen-zone-2022.pdf"
-
-- gruppo: "Guide"
-  voci:
-    - titolo: "Guida di Pechino"
-      file: "/assets/materiali/guida-di-pechino.pdf"
-
-- gruppo: "Tesine di maturità 2016"
-  voci:
-    - titolo: "Le filosofie dell'armonia"
-      file: "/assets/materiali/tesina-2016-filosofie-armonia.pdf"
-    - titolo: "Cina: diritti umani violati"
-      file: "/assets/materiali/tesina-2016-diritti-umani.pdf"
-    - titolo: "Rapporto uomo-natura"
-      file: "/assets/materiali/tesina-2016-uomo-natura.pdf"
-
-- gruppo: "Linux Day 2014"
-  voci:
-    - titolo: "Linux Day 2014"
-      file: "/assets/materiali/linux-day-2014.pdf"

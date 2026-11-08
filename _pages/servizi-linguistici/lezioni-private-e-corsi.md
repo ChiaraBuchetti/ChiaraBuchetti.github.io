@@ -7,7 +7,7 @@ layout: servizio
 servizio: lezioni
 in_breve:
   - { icon: "users", label: "Formato", value: "Individuali o piccoli gruppi" }
-  - { icon: "pin",   label: "In presenza", value: "Pisa, Livorno, Grosseto" }
+  - { icon: "pin",   label: "In presenza", value: "Pisa" }
   - { icon: "video", label: "Online", value: "Meet, Zoom" }
   - { icon: "calendar", label: "Orari", value: "Da concordare" }
 image:
@@ -24,8 +24,6 @@ image:
   <li class="topic tone-red"><span class="topic-zh" lang="zh">商</span><span>Cinese commerciale</span></li>
   <li class="topic tone-sky"><span class="topic-zh">EN</span><span>Inglese</span></li>
   <li class="topic tone-sky"><span class="topic-zh">EN</span><span>Inglese per scopi professionali</span></li>
-  <li class="topic tone-yellow"><span class="topic-zh">DE</span><span>Tedesco</span></li>
-  <li class="topic tone-jade"><span class="topic-zh">FR</span><span>Francese</span></li>
   <li class="topic tone-ink"><span class="topic-zh">IT</span><span>Italiano per stranieri</span></li>
 </ul>
 
@@ -34,7 +32,7 @@ image:
   <div class="feature">
     <span class="feature-icon">{% include icon.html name="pin" %}</span>
     <h3>In presenza</h3>
-    <p>Le lezioni frontali si tengono a Pisa, Livorno e Grosseto, in giorni e orari da concordare.</p>
+    <p>Le lezioni frontali si tengono a Pisa, in giorni e orari da concordare.</p>
   </div>
   <div class="feature">
     <span class="feature-icon">{% include icon.html name="video" %}</span>
