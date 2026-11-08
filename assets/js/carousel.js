@@ -1,19 +1,73 @@
 /* Chiara Buchetti — carousel automatico per immagini consecutive nel prose
    Converte automaticamente ogni sequenza di 2+ immagini in successione
    nel corpo di un articolo in un carosello navigabile.
-   Supporta anche i blocchi wp-block-gallery di WordPress. */
+   Supporta wp-block-gallery di WordPress.
+   Click sull'immagine → lightbox fullscreen. */
 (function () {
   "use strict";
 
   var prose = document.querySelector(".layout-post .prose");
   if (!prose) return;
 
+  /* ── Lightbox ── */
+  var lb = null;
+  function createLightbox() {
+    if (lb) return;
+    lb = document.createElement("div");
+    lb.className = "pcar-lb";
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Immagine ingrandita");
+
+    var inner = document.createElement("div");
+    inner.className = "pcar-lb-inner";
+
+    var img = document.createElement("img");
+    img.className = "pcar-lb-img";
+
+    var cap = document.createElement("p");
+    cap.className = "pcar-lb-cap";
+
+    var close = document.createElement("button");
+    close.className = "pcar-lb-close";
+    close.setAttribute("aria-label", "Chiudi");
+    close.innerHTML = "&#x2715;";
+
+    inner.appendChild(img);
+    inner.appendChild(cap);
+    lb.appendChild(inner);
+    lb.appendChild(close);
+    document.body.appendChild(lb);
+
+    function closeLb() {
+      lb.classList.remove("is-open");
+      document.documentElement.style.overflow = "";
+    }
+    close.addEventListener("click", closeLb);
+    lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lb.classList.contains("is-open")) closeLb();
+    });
+  }
+
+  function openLightbox(src, alt, caption) {
+    createLightbox();
+    var img = lb.querySelector(".pcar-lb-img");
+    var cap = lb.querySelector(".pcar-lb-cap");
+    img.src = src;
+    img.alt = alt || "";
+    cap.textContent = caption || "";
+    cap.style.display = caption ? "" : "none";
+    lb.classList.add("is-open");
+    document.documentElement.style.overflow = "hidden";
+    lb.querySelector(".pcar-lb-close").focus();
+  }
+
   /* ── Rileva se un elemento è un "blocco immagine" puro ── */
   function isImgBlock(el) {
     if (!el || el.nodeType !== 1) return false;
     var tag = el.tagName.toLowerCase();
     if (tag === "figure") {
-      // Esclude wp-block-gallery: gestito separatamente
       if (el.classList.contains("wp-block-gallery")) return false;
       return !!el.querySelector("img");
     }
@@ -30,8 +84,14 @@
   function extractSlide(el) {
     var img = el.querySelector("img");
     var cap = el.querySelector("figcaption");
+    // se l'immagine è dentro un <a href>, usa href come src fullsize
+    var anchor = el.querySelector("a[href]");
+    var fullSrc = (anchor && /\.(jpe?g|png|gif|webp|avif|svg)(\?.*)?$/i.test(anchor.getAttribute("href")))
+                  ? anchor.getAttribute("href")
+                  : (img ? (img.getAttribute("src") || "") : "");
     return {
       src: img ? (img.getAttribute("src") || "") : "",
+      fullSrc: fullSrc,
       alt: img ? (img.getAttribute("alt") || "") : "",
       caption: cap ? cap.textContent.trim() : ""
     };
@@ -70,6 +130,13 @@
       img.alt = data.alt;
       img.loading = i === 0 ? "eager" : "lazy";
       img.className = "in-carousel";
+      img.title = "Clicca per ingrandire";
+      img.style.cursor = "zoom-in";
+
+      img.addEventListener("click", function () {
+        openLightbox(data.fullSrc || data.src, data.alt, data.caption);
+      });
+
       slide.appendChild(img);
 
       if (data.caption) {
@@ -133,7 +200,6 @@
     prev.addEventListener("click", function () { go(cur - 1); });
     next.addEventListener("click", function () { go(cur + 1); });
 
-    /* Tastiera (quando il carosello è in focus) */
     car.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft")  { e.preventDefault(); go(cur - 1); }
       if (e.key === "ArrowRight") { e.preventDefault(); go(cur + 1); }
@@ -185,7 +251,6 @@
   });
   if (run.length >= 2) groups.push(run);
 
-  /* ── Sostituisce ogni gruppo con il carosello ── */
   groups.forEach(function (group) {
     var carousel = buildCarousel(group);
     prose.insertBefore(carousel, group[0]);

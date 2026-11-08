@@ -1099,3 +1099,12 @@ a.svc-card-cta:hover { color: #fff; border-color: var(--ink); box-shadow: 6px 6p
 .pcar-dot.is-active{background:var(--red);border-color:var(--red);transform:scale(1.2);}
 .pcar-counter{font-size:.82rem;color:var(--muted);font-family:var(--font-head);font-weight:600;letter-spacing:.03em;}
 @media(max-width:600px){.pcar-btn{width:34px;height:34px;font-size:1.2rem;}.pcar-slide img{max-height:300px;}}
+
+/* ── Lightbox carosello ── */
+.pcar-lb{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.85);opacity:0;pointer-events:none;transition:opacity .25s;}
+.pcar-lb.is-open{opacity:1;pointer-events:auto;}
+.pcar-lb-inner{position:relative;max-width:min(92vw,1100px);max-height:90dvh;display:flex;flex-direction:column;align-items:center;gap:.6rem;}
+.pcar-lb-img{max-width:100%;max-height:85dvh;object-fit:contain;border-radius:var(--radius-s);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--yellow);background:var(--cream);}
+.pcar-lb-cap{color:#fff;font-size:.9rem;text-align:center;margin:0;text-shadow:0 1px 3px rgba(0,0,0,.8);}
+.pcar-lb-close{position:fixed;top:1rem;right:1rem;width:42px;height:42px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,.55);color:#fff;font-size:1.3rem;cursor:pointer;display:grid;place-items:center;transition:background .15s;}
+.pcar-lb-close:hover{background:var(--red);}
